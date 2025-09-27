@@ -24,5 +24,6 @@ public class T01_ContactListApplicationTest {
         Verify successful login
         Verify each contact is added correctly
         Verify total contact count equals 5
+        //
      */
 }
