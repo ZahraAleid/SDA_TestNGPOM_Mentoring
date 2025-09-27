@@ -18,8 +18,6 @@ public class TransactionPage {
     @FindBy(xpath = "//button[@ng-class='btnClass3']")
     public WebElement withdrawlBtn;
 
-//    @FindBy(xpath = "//button[@ng-class='btnClass1']")
-//    public WebElement transactionsBtn;
 
     // Amount input field
     @FindBy(xpath = "//input[@ng-model='amount']")
@@ -35,9 +33,6 @@ public class TransactionPage {
     // Balance and account info
     @FindBy(xpath = "//strong[2]")
     public WebElement balanceLabel;
-
-//    @FindBy(xpath = "//strong[1]")
-//    public WebElement accountNumber;
 
     // Success/Error messages
     @FindBy(xpath = "//span[@ng-show='message']")

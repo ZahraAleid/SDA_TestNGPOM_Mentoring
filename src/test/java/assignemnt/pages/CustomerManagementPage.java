@@ -31,9 +31,6 @@ public class CustomerManagementPage {
     @FindBy(xpath = "//button[@ng-click='showCust()']")
     public WebElement customersBtn;
 
-    // Customer management table - ADD THIS LINE
-    @FindBy(xpath = "//table")
-    public WebElement customersTable;
 
     // Delete button - this will be found dynamically for each customer row
     @FindBy(xpath = "//button[@ng-click='deleteCust(cust)']")
@@ -42,4 +39,16 @@ public class CustomerManagementPage {
     // Search functionality
     @FindBy(xpath = "//input[@ng-model='searchCustomer']")
     public WebElement searchBox;
+
+
+    ///
+    @FindBy(id = "userSelect")
+    public WebElement userSelect;
+
+    @FindBy(id = "currency")
+    public WebElement userCurrency;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement processBtn;
+
 }

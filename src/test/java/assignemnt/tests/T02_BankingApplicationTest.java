@@ -27,9 +27,9 @@ public class T02_BankingApplicationTest {
 
     Page Objects Needed:
         ManagerLoginPage (manager interface elements) ✅
-        CustomerManagementPage (add/delete customer elements) ✅??
-        AccountManagementPage (account creation elements)
-        CustomerLoginPage (customer interface elements)
+        CustomerManagementPage (add/delete customer elements) ✅
+        AccountManagementPage (account creation elements)✅
+        CustomerLoginPage (customer interface elements) ✅
         TransactionPage (deposit/withdraw elements) ✅
 
     Assertions:
@@ -44,23 +44,21 @@ public class T02_BankingApplicationTest {
     void bankApplicationTest() throws InterruptedException {
 
         //Page object creation
+        AccountManagementPage accountManagementPage = new AccountManagementPage();
         CustomerLoginPage customerLoginPage = new CustomerLoginPage();
-        FirstPage firstPage = new FirstPage();
         ManagerLoginPage managerLoginPage = new ManagerLoginPage();
         CustomerManagementPage customerManagementPage = new CustomerManagementPage();
-        OpenAccount openAccount = new OpenAccount();
         TransactionPage transactionPage = new TransactionPage();
-
 
 
         //Navigate to the bank application
         Driver.getDriver().get(ConfigReader.getProperty("bank_url"));
 
         //open 5 new customer accounts
-        firstPage.managerLoginBtn.click();
+        accountManagementPage.managerLoginBtn.click();
 
 
-
+        // loop to add new customers and open their accounts
         for (int i =1 ; i<6 ; i++) {
 
             //add customer
@@ -75,9 +73,9 @@ public class T02_BankingApplicationTest {
 
             //open account
             managerLoginPage.openAccountBtn.click();
-            new Select(openAccount.userSelect).selectByVisibleText(ConfigReader.getProperty("user"+i+"_fName")+" "+ConfigReader.getProperty("user"+i+"_lName"));
-            new Select(openAccount.userCurrency).selectByValue("Dollar");
-            openAccount.processBtn.click();
+            new Select(customerManagementPage.userSelect).selectByVisibleText(ConfigReader.getProperty("user"+i+"_fName")+" "+ConfigReader.getProperty("user"+i+"_lName"));
+            new Select(customerManagementPage.userCurrency).selectByValue("Dollar");
+            customerManagementPage.processBtn.click();
 
             Assert.assertTrue(Driver.getDriver().switchTo().alert().getText().contains("Account created successfully"),"account wasn't created successfully");
             Driver.getDriver().switchTo().alert().accept();
@@ -85,11 +83,13 @@ public class T02_BankingApplicationTest {
 
         }
 
+        // loop to login into customer accounts and deposit and withdraw
         for (int i = 1 ; i < 6; i++){
-            //Customer login
-            firstPage.homeBtn.click();
 
-            firstPage.customerLoginBtn.click();
+            //Customer login
+            accountManagementPage.homeBtn.click();
+
+            accountManagementPage.customerLoginBtn.click();
             customerLoginPage.login(ConfigReader.getProperty("user"+i+"_fName")+" "+ConfigReader.getProperty("user"+i+"_lName"));
 
             //deposit 100 USD
@@ -104,9 +104,9 @@ public class T02_BankingApplicationTest {
         }
 
         //Customer login on any account to withdrawal 100 USD
-        firstPage.homeBtn.click();
+        accountManagementPage.homeBtn.click();
 
-        firstPage.customerLoginBtn.click();
+        accountManagementPage.customerLoginBtn.click();
         customerLoginPage.login(ConfigReader.getProperty("user1_fName")+" "+ConfigReader.getProperty("user1_lName"));
 
         //withdrawal 100 USD
@@ -120,15 +120,15 @@ public class T02_BankingApplicationTest {
         transactionPage.logoutBtn.click();
 
         //Delete all accounts created
-        firstPage.homeBtn.click();
-        firstPage.managerLoginBtn.click();
+        accountManagementPage.homeBtn.click();
+        accountManagementPage.managerLoginBtn.click();
         customerManagementPage.customersBtn.click();
 
+        //loop to delete the created accounts
         for (int i =1 ; i<6 ; i++) {
             customerManagementPage.searchBox.clear();
             customerManagementPage.searchBox.sendKeys(ConfigReader.getProperty("user"+i+"_code"));
             customerManagementPage.deleteBtn.click();
-
 
             Thread.sleep(500);
 
