@@ -1,9 +1,8 @@
-package assignemnt.tests;
+package assignemnt.tests.day01;
 
 import assignemnt.pages.*;
 import assignemnt.utilities.ConfigReader;
 import assignemnt.utilities.Driver;
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;

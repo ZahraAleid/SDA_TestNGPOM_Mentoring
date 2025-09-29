@@ -1,4 +1,4 @@
-package assignemnt.tests;
+package assignemnt.tests.day01;
 
 public class T01_ContactListApplicationTest {
 
