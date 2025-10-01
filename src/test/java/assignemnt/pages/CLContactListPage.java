@@ -19,7 +19,7 @@ public class CLContactListPage {
     @FindBy(xpath = "//table/tr")
     public List<WebElement> myTableRows;
 
-
+//CLContactListPage
     public CLContactListPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }

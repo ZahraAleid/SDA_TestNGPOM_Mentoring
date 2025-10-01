@@ -38,6 +38,7 @@ public class CLAddContactPage {
             PageFactory.initElements(Driver.getDriver(), this);
         }
 
+        //add contact
         public void addContact(
                 String firstName,
                 String lastName,

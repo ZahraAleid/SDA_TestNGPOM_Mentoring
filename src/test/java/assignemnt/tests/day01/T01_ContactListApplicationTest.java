@@ -75,7 +75,7 @@ public class T01_ContactListApplicationTest {
 
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2001);
                 Assert.assertEquals(clContactListPage.myTableRows.size(), i);
                 clContactListPage.addContact.click();
             } catch (InterruptedException e) {

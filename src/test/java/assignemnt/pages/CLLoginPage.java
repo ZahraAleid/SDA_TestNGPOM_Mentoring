@@ -36,6 +36,7 @@ public class CLLoginPage {
         submitButton.click();
     }
 
+    //signup
     public void signup(String firstName, String lastName, String email, String password) {
         signupButton.click();
         this.firstName.sendKeys(firstName);
