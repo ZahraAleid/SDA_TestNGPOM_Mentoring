@@ -62,4 +62,11 @@ public class DriverSingleton {
             driver = null;
         }
     }
+    /*
+    Multi-Browser Support: Chrome, Firefox, Safari, Headless Chrome
+    Configuration-Driven: Browser type from properties file
+    Implicit Wait: Built-in timeout management
+    Window Management: Automatic maximization
+    Proper Cleanup: closeDriver() method for resource management
+     */
 }

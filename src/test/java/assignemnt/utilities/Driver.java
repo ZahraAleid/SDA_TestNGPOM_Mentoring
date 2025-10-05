@@ -51,7 +51,7 @@ public class Driver {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             alert.accept();
         } catch (Exception e) {
-            // No alert present, continue normally
+            // No alert present, continue normally2
         }
     }
 
